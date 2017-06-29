@@ -9,6 +9,7 @@ use AntiMattr\GoogleBundle\Analytics\Item;
 use AntiMattr\GoogleBundle\Analytics\Product;
 use AntiMattr\GoogleBundle\Analytics\Transaction;
 use Symfony\Component\DependencyInjection\ContainerInterface;
+use Symfony\Component\HttpFoundation\Request;
 
 class Analytics
 {
@@ -571,11 +572,11 @@ class Analytics
     }
 
     /**
-     * @return Symfony\Component\HttpFoundation\Request $request
+     * @return Request $request
      */
     public function getRequest()
     {
-        return $this->container->get('request');
+        return $this->container->get('request_stack')->getCurrentRequest();
     }
 
     /**
